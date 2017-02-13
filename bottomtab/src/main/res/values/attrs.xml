@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BottomTabItem">
+        <attr name="normalColor" format="color" />
+        <attr name="selectedColor" format="color" />
+        <attr name="normalIcon" format="reference" />
+        <attr name="selectedIcon" format="reference" />
+        <attr name="normalText" format="string" />
+    </declare-styleable>
+</resources>
