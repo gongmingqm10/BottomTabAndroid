@@ -11,8 +11,7 @@
             android:id="@+id/tab_icon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:paddingTop="2dp"
-            tools:src="@mipmap/ic_launcher" />
+            android:paddingTop="2dp" />
         <TextView
             android:id="@+id/tab_label"
             android:layout_marginTop="1dp"
