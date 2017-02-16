@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-apply plugin: 'java'
 
 android {
     compileSdkVersion 23
@@ -84,7 +83,7 @@ bintray {
         version {
             name = '0.1.0'
             desc = 'Bottom tab 0.1.0 experimental version'
-            release = new Date()
+            released = new Date()
             vcsTag = 'v0.1.0'
         }
     }
