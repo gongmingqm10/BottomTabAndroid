@@ -1,28 +1,7 @@
 apply plugin: 'com.android.library'
-
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'bottom-tab'
-
-    publishedGroupId = 'net.gongmingqm10.uikit'
-    libraryName = 'BottomTab'
-    artifact = 'bottom-tab'
-
-    libraryDescription = 'A Bottom Tab uikit on Android'
-
-    siteUrl = 'https://github.com/gongmingqm10/BottomTabAndroid'
-    gitUrl = 'https://github.com/gongmingqm10/BottomTabAndroid.git'
-
-    libraryVersion = '0.1.0'
-
-    developerId = 'gongmingqm10'
-    developerName = 'Ming Gong'
-    developerEmail = 'gongmingqm10@foxmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'java'
 
 android {
     compileSdkVersion 23
@@ -52,4 +31,61 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:23.3.0'
     testCompile 'junit:junit:4.12'
+}
+
+def siteUrl = 'https://github.com/gongmingqm10/BottomTabAndroid'
+def gitUrl = 'https://github.com/gongmingqm10/BottomTabAndroid.git'
+group = 'net.gongmingqm10.uikit'
+version = '1.0.0'
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name 'Android bottom tab'     //项目的描述 你可以多写一点
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'gongmingqm10'
+                        name 'Ming Gong'
+                        email 'gongmingqm10@foxmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    pkg {
+        repo = "maven"
+        name = "bottom-tab"    //发布到JCenter上的项目名字
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+        version {
+            name = '0.1.0'
+            desc = 'Bottom tab 0.1.0 experimental version'
+            release = new Date()
+            vcsTag = 'v0.1.0'
+        }
+    }
 }
