@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'bottom-tab'
+
+    publishedGroupId = 'net.gongmingqm10.uikit'
+    libraryName = 'BottomTab'
+    artifact = 'bottom-tab'
+
+    libraryDescription = 'A Bottom Tab uikit on Android'
+
+    siteUrl = 'https://github.com/gongmingqm10/BottomTabAndroid'
+    gitUrl = 'https://github.com/gongmingqm10/BottomTabAndroid.git'
+
+    libraryVersion = '0.1.0'
+
+    developerId = 'gongmingqm10'
+    developerName = 'Ming Gong'
+    developerEmail = 'gongmingqm10@foxmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
