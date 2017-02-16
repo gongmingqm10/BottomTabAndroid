@@ -32,19 +32,59 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-def siteUrl = 'https://github.com/gongmingqm10/BottomTabAndroid'
-def gitUrl = 'https://github.com/gongmingqm10/BottomTabAndroid.git'
-group = 'net.gongmingqm10.uikit'
-version = '1.0.0'
+if (project.hasProperty("android")) { // Android libraries
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.srcDirs
+    }
+
+    task javadoc(type: Javadoc) {
+        source = android.sourceSets.main.java.srcDirs
+        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    }
+} else { // Java libraries
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+ext {
+    siteUrl = 'https://github.com/gongmingqm10/BottomTabAndroid'
+    gitUrl = 'https://github.com/gongmingqm10/BottomTabAndroid.git'
+    currentVersion = '0.1.0'
+    groupId = 'net.gongmingqm10.uikit'
+    artifactId = 'bottom-tab'
+    desc = 'Android bottom tab'
+}
+
+
+group = groupId
+version = currentVersion
 
 install {
     repositories.mavenInstaller {
         pom {
             project {
-                packaging 'aar'
-                name 'Android bottom tab'     //项目的描述 你可以多写一点
+                name artifactId
+                description desc
                 url siteUrl
-                // Set your license
+
+                packaging 'aar'
+                groupId groupId
+                artifactId artifactId
+                version currentVersion
+
                 licenses {
                     license {
                         name 'The Apache Software License, Version 2.0'
@@ -73,18 +113,21 @@ properties.load(project.rootProject.file('local.properties').newDataInputStream(
 bintray {
     user = properties.getProperty("bintray.user")
     key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "bottom-tab"    //发布到JCenter上的项目名字
+        name = artifactId
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
         publish = true
+        publicDownloadNumbers = true
         version {
-            name = '0.1.0'
-            desc = 'Bottom tab 0.1.0 experimental version'
-            released = new Date()
-            vcsTag = 'v0.1.0'
+            desc = desc
+            gpg {
+                sign = true //Determines whether to GPG sign the files. The default is false
+                passphrase = properties.getProperty("bintray.gpg.password")
+            }
         }
     }
 }
