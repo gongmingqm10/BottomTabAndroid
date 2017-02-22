@@ -2,10 +2,9 @@
 
 Android 底部栏组件。主要为了仿制 Android 底部栏组件效果。按照 Material Design 的设计标准，官方推荐使用抽屉栏效果，但是目前还是存在很多应用使用和 iOS 一套的设计标准。即仍然使用传统的底部栏操作交互。
 
-效果如如下：
+效果如下：
 
-![Demo](https://raw.githubusercontent.com/gongmingqm10/BottomTabAndroid/master/arts/bintray_demo.png | width=200)
-
+<img src="https://raw.githubusercontent.com/gongmingqm10/BottomTabAndroid/master/arts/bintray_demo.png" width="200">
 
 ## 用法
 
