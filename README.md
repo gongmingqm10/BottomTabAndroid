@@ -4,7 +4,7 @@ Android 底部栏组件。主要为了仿制 Android 底部栏组件效果。按
 
 效果如如下：
 
-![Demo](https://raw.githubusercontent.com/gongmingqm10/BottomTabAndroid/master/arts/bintray_demo.png)
+![Demo](https://raw.githubusercontent.com/gongmingqm10/BottomTabAndroid/master/arts/bintray_demo.png =200x)
 
 
 ## 用法
