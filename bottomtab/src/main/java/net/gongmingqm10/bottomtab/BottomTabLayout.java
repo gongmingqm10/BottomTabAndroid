@@ -78,6 +78,10 @@ public class BottomTabLayout extends RelativeLayout {
         tabViewPager.setCurrentItem(position);
     }
 
+    public void addOnPageChangeListener(ViewPager.OnPageChangeListener pageChangeListener) {
+        tabViewPager.addOnPageChangeListener(pageChangeListener);
+    }
+
     private ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
         @Override
         public void onPageSelected(int position) {

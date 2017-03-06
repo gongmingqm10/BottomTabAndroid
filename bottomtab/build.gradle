@@ -62,7 +62,7 @@ artifacts {
 ext {
     siteUrl = 'https://github.com/gongmingqm10/BottomTabAndroid'
     gitUrl = 'https://github.com/gongmingqm10/BottomTabAndroid.git'
-    currentVersion = '0.2.0'
+    currentVersion = '0.3.0'
     groupId = 'net.gongmingqm10.uikit'
     artifactId = 'bottom-tab'
     desc = 'Android bottom tab'

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BottomTabAndroid</string>
+    <string name="bottom_tab_lib_name">BottomTabAndroid</string>
 
     <string name="label_home">首页</string>
     <string name="label_singer">明星</string>
